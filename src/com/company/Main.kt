@@ -6,7 +6,7 @@ fun main() {
     val daysPrice = ArrayList<Int>()
 
     initDaysPrice(daysPrice)
-    daysPrice.addAll(arrayOf(1, 1, 3, 1, 2))
+//    daysPrice.addAll(arrayOf(1, 1, 3, 1, 2))
 
     print("max profit = ${getMaxValue(daysPrice)}")
 }
@@ -16,7 +16,7 @@ fun getMaxValue(daysPrice: ArrayList<Int>): Int {
     if (daysPrice.size == 1) return daysPrice[0]
     if (daysPrice.size == 2) {
         return if (daysPrice[0] > daysPrice[1]){
-            (daysPrice[0] * 2)
+            (daysPrice[0] + daysPrice[1])
         } else {
             (daysPrice[1] * 2)
         }
@@ -25,7 +25,6 @@ fun getMaxValue(daysPrice: ArrayList<Int>): Int {
     var count = daysPrice[daysPrice.size - 1]
     var max = daysPrice[daysPrice.size - 1]
     for(i in daysPrice.size - 2 downTo 0) {
-        println("i = $i, price = ${daysPrice[i]}")
         if (max >= daysPrice[i]) {
             count += max
         } else {
@@ -33,7 +32,6 @@ fun getMaxValue(daysPrice: ArrayList<Int>): Int {
             max = daysPrice[i]
             count = 0
         }
-        println("count = $count")
     }
     profit += count
     return profit
